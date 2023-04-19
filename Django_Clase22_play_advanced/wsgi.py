@@ -1,5 +1,5 @@
 """
-WSGI config for Django_Clase22_play_advanced project.
+WSGI config for Django_Clase22_play_advanced.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

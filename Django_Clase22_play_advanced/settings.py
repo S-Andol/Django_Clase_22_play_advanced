@@ -14,13 +14,14 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+# Esta es una variable que tiene una dirección de donde esta todo nuestro proyecto.
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-1hms+$$wrmrad5%85ojcr@q+=&etvy+ufb+b7y)!_u@@jr+-f%'
+SECRET_KEY = 'django-insecure-nruz610xvxodhw$&qk4saeais@xpln3fe!#6!2a9(wk*$3f9-h'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'inicio',
 ]
 
 MIDDLEWARE = [
@@ -49,12 +51,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'Django_Clase22_play_advanced.urls'
+ROOT_URLCONF = 'Django_Clase22_play_advanced'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR/'templates'],# agregamos la base de datos y le colocamos un str de templates
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
