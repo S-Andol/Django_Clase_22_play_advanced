@@ -17,7 +17,7 @@
 {% endcomment %}
 {% comment %} Si nos olvidamos de poner el method, el programa lo toma como si fuera un metodo GET. {% endcomment %}
 {% block contenido %}
-<form action= {% url 'crear_animal' %} method="POST">
+<form action= {% url 'inicio:crear_animal' %} method="POST">
     {% comment %} {% url '' %} le estamos diciendo que vaya al url pero al mismo lugar, si queremos que vaya a otro, tenemos que agregar la ubicacion en el str {% endcomment %}
     {% csrf_token %} 
     <table>

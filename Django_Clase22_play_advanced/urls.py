@@ -21,7 +21,7 @@ from django.urls import path,include
 
 
 
-app_name = 'inicio' # podemos nombrar al urlpatterns con un nombre
+# app_name = 'inicio' # podemos nombrar al urlpatterns con un nombre
 
 
 # patrones de URL

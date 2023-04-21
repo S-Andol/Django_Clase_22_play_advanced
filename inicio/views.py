@@ -3,7 +3,7 @@ from datetime import datetime
 from django.template import Template, Context, loader
 from  inicio.models import Animal
 from django.shortcuts import render, redirect
-from inicio.forms import CreacionAnimalFormulario
+from inicio.forms import CreacionAnimalFormulario, BuscarAnimal
 
 def mi_vista(request):
     print('Pase por aca!!! REY') #sale en la terminal, en el momento en que se ejecute
@@ -32,7 +32,7 @@ def saludar(request, nombre, apellido):
 # Para copiarlo, click secundario sobre mi archivo .html > "copiar ruta de acceso" y lo pegamos despues del open. Ademas le agregamos un read para leerlo.
 def mi_primer_template(request):
     # recordar tambien agregar la "r" adelante porque sino me va a tomar las \U como 
-    archivo = open(r'C:\Users\sandolcetti\Documents\Coder House\Python\Clases\Clase 19\Django_Clase_19_Playground\templates\mi_primer_templates.html', 'r')
+    archivo = open(r'C:\Users\sandolcetti\Documents\Coder House\Python\Clases\Clase 22\Django_Clase_22_play_advanced\inicio\templates\Inicio\mi_primer_templates.html', 'r')
     # archivo = open(r'mostrar_fecha.html', 'r')
     
     # Convertimos nuestro archivo leido y lo transformamos en un template. 
@@ -134,17 +134,26 @@ def crear_animal(request):
             datos_correctos = formulario.cleaned_data
             
             
-            animal = Animal (nombre = request.POST['nombre'], edad = request.POST['edad'])
+            animal = Animal (nombre = datos_correctos['nombre'], edad = datos_correctos['edad'])
             animal.save()
 
-            return redirect('listar_animales')
+            return redirect('inicio:listar_animales')
             
     formulario = CreacionAnimalFormulario()
     return render(request, 'inicio/crear_animal_v3.html',{'formulario': formulario})
 
 
 def lista_animales(request):
-    return render(request, 'inicio/lista_animales.html')
+    nombre_a_buscar = request.GET.get('nombre',None)
+    
+    if nombre_a_buscar:
+        # animales = Animal.objects.filter(nombre=nombre_a_buscar)
+        animales = Animal.objects.filter(nombre__icontains = nombre_a_buscar)
+        # icontains, me permite cuando filtro buscar por caracteres que contengan esa letra por ejemplo
+    else:
+        animales = Animal.objects.all()
+    formulario_busqueda = BuscarAnimal()
+    return render(request, 'inicio/lista_animales.html',{'animales':animales,'formulario':formulario_busqueda})
 
 
 

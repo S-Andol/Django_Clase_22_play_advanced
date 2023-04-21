@@ -3,7 +3,7 @@ from django.urls import path
 # otra forma de pedir eso:
 from inicio import views
 
-# app_name = 'inicio'
+app_name = 'inicio'
 
 # patrones de URL
 urlpatterns = [ 
